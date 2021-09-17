@@ -11,6 +11,8 @@ public class UserResource {
 
     private static final String TOPIC = "example-topic-1";
 
+    private static final String CONFULENT_TEST_TOPIC = "confluent-test-topic";
+
     @Autowired
     private KafkaTemplate<String,Customer> template;
 
@@ -30,7 +32,7 @@ public class UserResource {
 
         System.out.println("--- input request from postman ---\n"+customer);
 
-        template.send(TOPIC,customer);
+        template.send(TOPIC, CONFULENT_TEST_TOPIC, customer);
 
         return "JSON message posted to kafka server!!";
     }
